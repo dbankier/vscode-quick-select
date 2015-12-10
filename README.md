@@ -43,8 +43,8 @@ Here some examples - and it supports multiple selections.
 
 ![singlequotes](./screens/singlequotes.gif)
 
-<kbd>⌘</kbd><kbd>k</kbd> <kbd>(</kbd>
-<kbd>⌘</kbd><kbd>k</kbd> <kbd>[</kbd>
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>(</kbd> and
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>[</kbd> and
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>{</kbd>
 
 ![brackets](./screens/brackets.gif)
