@@ -2,7 +2,9 @@
 
 
 Yes I know about the ⌃⇧⌘← and ⌃⇧⌘→ expand/shrink selection. Having come from VIM I think these are still missing.
-It currently only supports matching on a single line, but does support multiple cursors.
+
+It now supports multi-lines selection, matching correctly.
+
 See the examples below.
 
 
@@ -35,6 +37,8 @@ npm install
 
 Here some examples - and it supports multiple selections.
 
+In the examples below use <kbd>CTRL</kbd> instead of <kbd>⌘</kbd> for Windows.
+
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>"</kbd>
 
 ![doublequotes](./screens/doublequotes.gif)
@@ -43,9 +47,19 @@ Here some examples - and it supports multiple selections.
 
 ![singlequotes](./screens/singlequotes.gif)
 
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>`</kbd>
+
+![singlequotes](./screens/backticks.gif)
+
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>(</kbd> and
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>[</kbd> and
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>{</kbd>
+
+Using the following performs and outer selection:
+
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>)</kbd> and
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>]</kbd> and
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>}</kbd>
 
 ![brackets](./screens/brackets.gif)
 
@@ -66,9 +80,13 @@ This matches the tag value.
 extension.selectSingleQuote
 extension.selectDoubleQuote
 extension.selectParenthesis
+extension.selectBackTick
 extension.selectSquareBrackets
-extension.selectAngleBrackets
 extension.selectCurlyBrackets
+extension.selectParenthesisOuter
+extension.selectSquareBracketsOuter
+extension.selectCurlyBracketsOuter
+extension.selectAngleBrackets
 extension.selectInTag
 ~~~
 

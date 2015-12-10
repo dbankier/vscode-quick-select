@@ -2,7 +2,7 @@
 	"name": "vscode-quick-select",
 	"displayName": "Quick and Simple Text Selection",
 	"description": "Jump to select between quote, bracktes, tags, etc",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"publisher": "dbankier",
 	"engines": {
 		"vscode": "^0.10.1"
