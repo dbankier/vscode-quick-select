@@ -3,7 +3,7 @@
 
 Yes I know about the ⌃⇧⌘← and ⌃⇧⌘→ expand/shrink selection. Having come from VIM I think these are still missing.
 
-It now supports multi-lines selection, matching correctly.
+It now supports multilines automatic selection, matching correctly.
 
 See the examples below.
 
