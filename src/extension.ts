@@ -99,7 +99,7 @@ function singleSelect({char, outer = false, multiline = false}: SingleSelectOpti
     } else if (multiline) {
       let start_pos = findPrevious(doc, line, char, character) || new vscode.Position(line, matches[next_index])
       if (!start_pos) { return s };
-      let end_pos: vscode.Position = findNext(doc, line, char, start_pos.character + 1);
+      let end_pos: vscode.Position = findNext(doc, start_pos.line, char, start_pos.character + 1);
       if (start_pos && end_pos) {
         start_pos = new vscode.Position(start_pos.line, start_pos.character - offset);
         end_pos = new vscode.Position(end_pos.line, end_pos.character - 1 + offset);
@@ -128,7 +128,7 @@ function matchingSelect({start_char, end_char, outer = false}: MatchingSelectOpt
     let end_index = ends.indexOf(end);
     let start_pos: vscode.Position = findPrevious(doc, line, start_char, character, end_char) || new vscode.Position(line, starts[start_index]);
     if (!start_pos) { return s };
-    let end_pos: vscode.Position = findNext(doc, line, end_char, start_pos.character + 1, start_char);
+    let end_pos: vscode.Position = findNext(doc, start_pos.line, end_char, start_pos.character + 1, start_char);
     if (start_pos && end_pos) {
       success = true;
       start_pos = new vscode.Position(start_pos.line, start_pos.character - start_offset);
