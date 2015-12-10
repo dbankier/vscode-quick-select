@@ -28,29 +28,36 @@ cd %USERPROFILE%\.vscode\extensions
 git clone https://github.com/dbankier/vscode-quick-select.git
 cd vscode-quick-select
 npm install
-~~~
+```
 
 
 ## Usage
 
 Here some examples - and it supports multiple selections.
 
-## <kbd>⌘</kbd><kbd>k</kbd> <kbd>"</kbd>
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>"</kbd>
+
 ![doublequotes](./screens/doublequotes.gif)
 
-## <kbd>⌘</kbd><kbd>k</kbd> <kbd>'</kbd>
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>'</kbd>
+
 ![singlequotes](./screens/singlequotes.gif)
 
-## <kbd>⌘</kbd><kbd>k</kbd> <kbd>(</kbd>
-## <kbd>⌘</kbd><kbd>k</kbd> <kbd>[</kbd>
-## <kbd>⌘</kbd><kbd>k</kbd> <kbd>{</kbd>
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>(</kbd>
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>[</kbd>
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>{</kbd>
+
 ![brackets](./screens/brackets.gif)
 
 
-## <kbd>⌘</kbd><kbd>k</kbd> <kbd><</kbd>
+<kbd>⌘</kbd><kbd>k</kbd> <kbd><</kbd>
+
 This also selects the matching tag.
-## <kbd>⌘</kbd><kbd>k</kbd> <kbd>></kbd>
+
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>></kbd>
+
 This matches the tag value.
+
 ![brackets](./screens/tags.gif)
 
 ### Customisation
