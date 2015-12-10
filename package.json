@@ -1,0 +1,63 @@
+{
+	"name": "vscode-quick-select",
+	"displayName": "Quick and Simple Text Selection",
+	"description": "Jump to select between quote, bracktes, tags, etc",
+	"version": "0.1.0",
+	"publisher": "dbankier",
+	"engines": {
+		"vscode": "^0.10.1"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.selectSingleQuote",
+		"onCommand:extension.selectDoubleQuote",
+		"onCommand:extension.selectParenthesis",
+		"onCommand:extension.selectSquareBrackets",
+		"onCommand:extension.selectAngleBrackets",
+		"onCommand:extension.selectCurlyBrackets",
+		"onCommand:extension.selectInTag"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"keybindings": [
+			{
+				"command": "extension.selectSingleQuote",
+				"key": "cmd+k '"
+			},
+			{
+				"command": "extension.selectDoubleQuote",
+				"key": "cmd+k shift+'"
+			},
+			{
+				"command": "extension.selectParenthesis",
+				"key": "cmd+k shift+9"
+			},
+			{
+				"command": "extension.selectSquareBrackets",
+				"key": "cmd+k ["
+			},
+			{
+				"command": "extension.selectAngleBrackets",
+				"key": "cmd+k shift+,"
+			},
+			{
+				"command": "extension.selectCurlyBrackets",
+				"key": "cmd+k shift+["
+			},
+			{
+				"command": "extension.selectInTag",
+				"key": "cmd+k shift+."
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
+	},
+	"devDependencies": {
+		"typescript": "^1.6.2",
+		"vscode": "0.10.x"
+	}
+}
