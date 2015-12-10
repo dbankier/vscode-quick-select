@@ -14,9 +14,13 @@
 		"onCommand:extension.selectSingleQuote",
 		"onCommand:extension.selectDoubleQuote",
 		"onCommand:extension.selectParenthesis",
+    "onCommand:extension.selectBackTick",
 		"onCommand:extension.selectSquareBrackets",
-		"onCommand:extension.selectAngleBrackets",
 		"onCommand:extension.selectCurlyBrackets",
+    "onCommand:extension.selectParenthesisOuter",
+		"onCommand:extension.selectSquareBracketsOuter",
+		"onCommand:extension.selectCurlyBracketsOuter",
+		"onCommand:extension.selectAngleBrackets",
 		"onCommand:extension.selectInTag"
 	],
 	"main": "./out/src/extension",
@@ -24,31 +28,58 @@
 		"keybindings": [
 			{
 				"command": "extension.selectSingleQuote",
-				"key": "cmd+k '"
+				"key": "ctrl+k '",
+        "mac": "cmd+k '"
 			},
 			{
 				"command": "extension.selectDoubleQuote",
-				"key": "cmd+k shift+'"
+				"key": "ctrl+k shift+'",
+        "mac": "cmd+k shift+'"
 			},
 			{
 				"command": "extension.selectParenthesis",
-				"key": "cmd+k shift+9"
+				"key": "ctrl+k shift+9",
+        "mac": "cmd+k shift+9"
+			},
+      {
+				"command": "extension.selectBackTick",
+				"key": "ctrl+k `",
+        "mac": "cmd+k `"
 			},
 			{
 				"command": "extension.selectSquareBrackets",
-				"key": "cmd+k ["
-			},
-			{
-				"command": "extension.selectAngleBrackets",
-				"key": "cmd+k shift+,"
+				"key": "ctrl+k [",
+        "mac": "cmd+k ["
 			},
 			{
 				"command": "extension.selectCurlyBrackets",
-				"key": "cmd+k shift+["
+				"key": "ctrl+k shift+[",
+        "mac": "cmd+k shift+["
+			},
+			{
+				"command": "extension.selectParenthesisOuter",
+				"key": "ctrl+k shift+0",
+        "mac": "cmd+k shift+0"
+			},
+			{
+				"command": "extension.selectSquareBracketsOuter",
+				"key": "ctrl+k ]",
+        "mac": "cmd+k ]"
+			},
+			{
+				"command": "extension.selectCurlyBracketsOuter",
+				"key": "ctrl+k shift+]",
+        "mac": "cmd+k shift+]"
+			},
+			{
+				"command": "extension.selectAngleBrackets",
+				"key": "ctrl+k shift+,",
+        "mac": "cmd+k shift+,"
 			},
 			{
 				"command": "extension.selectInTag",
-				"key": "cmd+k shift+."
+				"key": "ctrl+k shift+.",
+        "mac": "cmd+k shift+."
 			}
 		]
 	},
