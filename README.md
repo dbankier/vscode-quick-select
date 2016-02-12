@@ -41,15 +41,15 @@ In the examples below use <kbd>CTRL</kbd> instead of <kbd>⌘</kbd> for Windows.
 
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>"</kbd>
 
-![doublequotes](./screens/doublequotes.gif)
+![doublequotes](https://github.com/dbankier/vscode-quick-select/raw/master/screens/doublequotes.gif)
 
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>'</kbd>
 
-![singlequotes](./screens/singlequotes.gif)
+![singlequotes](https://github.com/dbankier/vscode-quick-select/raw/master/screens/singlequotes.gif)
 
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>`</kbd>
 
-![singlequotes](./screens/backticks.gif)
+![singlequotes](https://github.com/dbankier/vscode-quick-select/raw/master/screens/backticks.gif)
 
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>(</kbd> and
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>[</kbd> and
@@ -61,7 +61,9 @@ Using the following performs and outer selection:
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>]</kbd> and
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>}</kbd>
 
-![brackets](./screens/brackets.gif)
+Or if you have already made in inner selection, use the same key combination again to expand to an outer selection.
+
+![brackets](https://github.com/dbankier/vscode-quick-select/raw/master/screens/brackets.gif)
 
 
 <kbd>⌘</kbd><kbd>k</kbd> <kbd><</kbd>
@@ -72,7 +74,7 @@ This also selects the matching tag.
 
 This matches the tag value.
 
-![brackets](./screens/tags.gif)
+![brackets](https://github.com/dbankier/vscode-quick-select/raw/master/screens/tags.gif)
 
 ### Customisation
 

@@ -81,17 +81,24 @@ function singleSelect({char, outer = false, multiline = false}: SingleSelectOpti
   if (!editor) { return; };
   let doc = editor.document
   let sel = editor.selections
-  let offset = outer ? char.length : 0;
   editor.selections = sel.map(s => {
     let {line, character} = s.active;
     let matches = findOccurances(doc, line, char);
     let next = matches.find(a => a > character);
     let next_index = matches.indexOf(next);
+    let offset = outer ? char.length : 0;
     if (matches.length > 1 && matches.length % 2 === 0) {
+      // Jump inside the next matching pair
       if (next === -1) { return s }
       if (next_index % 2 !== 0) {
         next_index--;
       }
+      //Automatically grow to outer selection
+      if (!outer &&
+          new vscode.Position(line, matches[next_index]).isEqual(s.anchor) &&
+          new vscode.Position(line, matches[next_index + 1] - 1).isEqual(s.end)) {
+            offset = char.length
+          }
       return new vscode.Selection(
         new vscode.Position(line, matches[next_index] - offset),
         new vscode.Position(line, matches[next_index + 1] - 1 + offset)
@@ -100,6 +107,12 @@ function singleSelect({char, outer = false, multiline = false}: SingleSelectOpti
       let start_pos = findPrevious(doc, line, char, character) || new vscode.Position(line, matches[next_index])
       if (!start_pos) { return s };
       let end_pos: vscode.Position = findNext(doc, start_pos.line, char, start_pos.character + 1);
+      //Automatically grow to outer selection
+      if (!outer &&
+          start_pos.isEqual(s.anchor) &&
+          new vscode.Position(end_pos.line, end_pos.character - 1).isEqual(s.end)) {
+            offset = char.length
+          }
       if (start_pos && end_pos) {
         start_pos = new vscode.Position(start_pos.line, start_pos.character - offset);
         end_pos = new vscode.Position(end_pos.line, end_pos.character - 1 + offset);
@@ -131,6 +144,13 @@ function matchingSelect({start_char, end_char, outer = false}: MatchingSelectOpt
     let end_pos: vscode.Position = findNext(doc, start_pos.line, end_char, start_pos.character + 1, start_char);
     if (start_pos && end_pos) {
       success = true;
+      //Automatically grow to outer selection
+      if (!outer &&
+          start_pos.isEqual(s.anchor) &&
+          new vscode.Position(end_pos.line, end_pos.character - 1).isEqual(s.end)) {
+          start_offset = start_char.length;
+          end_offset = end_char.length;
+      }
       start_pos = new vscode.Position(start_pos.line, start_pos.character - start_offset);
       end_pos = new vscode.Position(end_pos.line, end_pos.character - 1 + end_offset);
       return new vscode.Selection(start_pos, end_pos)
