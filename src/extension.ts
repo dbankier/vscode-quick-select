@@ -8,6 +8,7 @@ export function activate(context: vscode.ExtensionContext) {
   var _ = undefined;
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectDoubleQuote', singleSelect.bind(_, { char: '"' })));
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectSingleQuote', singleSelect.bind(_, { char: "'" })));
+  context.subscriptions.push(vscode.commands.registerCommand('extension.selectQuotes', quoteSelect.bind(_, { char: "'" })));
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectBackTick', singleSelect.bind(_, { char: "`", multiline: true })));
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectParenthesis', matchingSelect.bind(_, { start_char: "(", end_char: ")" })));
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectSquareBrackets', matchingSelect.bind(_, { start_char: "[", end_char: "]" })));
@@ -73,6 +74,52 @@ function findPrevious(doc: vscode.TextDocument, line: number, char: string, star
     }
   }
   return findPrevious(doc, --line, char, undefined, nest_char, nested);
+}
+
+function quoteSelect(_a) {
+    //var char = _a.char, _b = _a.outer, outer = _b === void 0 ? false : _b, _c = _a.multiline, multiline = _c === void 0 ? false : _c;
+    var char = "'", _b = _a.outer, outer = _b === void 0 ? false : _b, _c = _a.multiline, multiline = _c === void 0 ? false : _c;
+    var editor = vscode.window.activeTextEditor;
+    if (!editor) {
+        return;
+    }
+    ;
+    var doc = editor.document;
+    var sel = editor.selections;
+    var offset = outer ? char.length : 0;
+    editor.selections = sel.map(function (s) {
+        var _a = s.active, line = _a.line, character = _a.character;
+        var matches = findOccurances(doc, line, char);
+        var next = matches.find(function (a) { return a > character; });
+        var next_index = matches.indexOf(next);
+        if (matches.length > 1 && matches.length % 2 === 0) {
+            if (next === -1) {
+                return s;
+            }
+            if (next_index % 2 !== 0) {
+                next_index--;
+            }
+            return new vscode.Selection(new vscode.Position(line, matches[next_index] - offset), new vscode.Position(line, matches[next_index + 1] - 1 + offset));
+        }
+        else {
+          var matches = findOccurances(doc, line, '"');
+          var next = matches.find(function (a) { return a > character; });
+          var next_index = matches.indexOf(next);
+          if (matches.length > 1 && matches.length % 2 === 0) {
+              if (next === -1) {
+                  return s;
+              }
+              if (next_index % 2 !== 0) {
+                  next_index--;
+              }
+              return new vscode.Selection(new vscode.Position(line, matches[next_index] - offset), new vscode.Position(line, matches[next_index + 1] - 1 + offset));
+          }
+          else {
+            return s;
+          }
+        }
+        return s;
+    });
 }
 
 interface SingleSelectOptions { char: string; outer?: boolean, multiline?: boolean }
