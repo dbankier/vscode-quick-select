@@ -9,6 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectDoubleQuote', singleSelect.bind(_, { char: '"' })));
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectSingleQuote', singleSelect.bind(_, { char: "'" })));
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectEitherQuote', selectEitherQuote));
+  context.subscriptions.push(vscode.commands.registerCommand('extension.switchQuotes', switchQuotes));
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectBackTick', singleSelect.bind(_, { char: "`", multiline: true })));
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectParenthesis', matchingSelect.bind(_, { start_char: "(", end_char: ")" })));
   context.subscriptions.push(vscode.commands.registerCommand('extension.selectSquareBrackets', matchingSelect.bind(_, { start_char: "[", end_char: "]" })));
@@ -136,7 +137,7 @@ function selectEitherQuote() {
   if (!editor) { return; };
   let doc = editor.document
   let sel = editor.selections
-  editor.selections = sel.map((s:vscode.Selection) => {
+  editor.selections = sel.map((s: vscode.Selection) => {
     let singleQuotes = findSingleSelect(s, doc, "'", false, false)
     let doubleQuotes = findSingleSelect(s, doc, '"', false, false)
     if (singleQuotes === s) { return doubleQuotes }
@@ -148,7 +149,34 @@ function selectEitherQuote() {
     if (singleQuotes.start.isBefore(doubleQuotes.start)) { return doubleQuotes; }
     return singleQuotes;
   })
+}
 
+function charRange(p: vscode.Position) {
+  let end_pos = new vscode.Position(p.line, p.character + 1);
+  return new vscode.Selection(p, end_pos)
+}
+const switchables = ['"', "'"]
+function switchQuotes() {
+  selectEitherQuote()
+  let editor = vscode.window.activeTextEditor;
+  if (!editor) { return; };
+  let doc = editor.document
+  let sel = editor.selections
+  sel.map((s: vscode.Selection) => {
+    if (s.start.isEqual(s.end)) { return }
+    //expand selection if needed
+    var expand = switchables.indexOf(doc.getText(charRange(s.start))) === -1 ? 1 : 0
+    let start_pos = new vscode.Position(s.start.line, s.start.character - expand);
+    let end_pos = new vscode.Position(s.end.line, s.end.character + expand - 1);
+    s = new vscode.Selection(start_pos, end_pos)
+    var char = doc.getText(charRange(s.start))
+    var edit = new vscode.WorkspaceEdit();
+    edit.replace(doc.uri, charRange(s.start), char == '"' ? "'" : '"')
+    vscode.workspace.applyEdit(edit)
+    edit.replace(doc.uri, charRange(s.end), char == '"' ? "'" : '"')
+    vscode.workspace.applyEdit(edit)
+    doc.getText()
+  })
 }
 interface MatchingSelectOptions { start_char: string, end_char: string, outer?: boolean }
 function matchingSelect({start_char, end_char, outer = false}: MatchingSelectOptions) {

@@ -1,7 +1,7 @@
 {
 	"name": "vscode-quick-select",
 	"displayName": "Quick and Simple Text Selection",
-	"description": "Jump to select between quote, bracktes, tags, etc",
+	"description": "Jump to select between quote, brackets, tags, etc",
 	"version": "0.2.2",
 	"publisher": "dbankier",
 	"engines": {
@@ -14,6 +14,7 @@
 		"onCommand:extension.selectSingleQuote",
 		"onCommand:extension.selectDoubleQuote",
 		"onCommand:extension.selectEitherQuote",
+		"onCommand:extension.switchQuotes",
 		"onCommand:extension.selectParenthesis",
     "onCommand:extension.selectBackTick",
 		"onCommand:extension.selectSquareBrackets",
@@ -41,6 +42,11 @@
 				"command": "extension.selectEitherQuote",
 				"key": "ctrl+k ;",
         "mac": "cmd+k ;"
+			},
+			{
+				"command": "extension.switchQuotes",
+				"key": "ctrl+k shift+;",
+        "mac": "cmd+k shift+;"
 			},
 			{
 				"command": "extension.selectParenthesis",

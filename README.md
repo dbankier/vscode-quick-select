@@ -5,6 +5,8 @@ Yes I know about the ⌃⇧⌘← and ⌃⇧⌘→ expand/shrink selection. Havi
 
 It now supports multilines automatic selection, matching correctly.
 
+**NEW:** you can also now toggle single/double quotes
+
 See the examples below.
 
 
@@ -47,6 +49,14 @@ In the examples below use <kbd>CTRL</kbd> instead of <kbd>⌘</kbd> for Windows.
 
 ![singlequotes](https://github.com/dbankier/vscode-quick-select/raw/master/screens/singlequotes.gif)
 
+**NEW:** You can also use this following shortcut to select either single or double quotes
+
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>;</kbd>
+
+**NEW:** You can also use this following shortcut to toggle quotes, e.g. `"word"` to `'word'`
+
+<kbd>⌘</kbd><kbd>k</kbd> <kbd>:</kbd>
+
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>`</kbd>
 
 ![singlequotes](https://github.com/dbankier/vscode-quick-select/raw/master/screens/backticks.gif)
@@ -81,6 +91,8 @@ This matches the tag value.
 ~~~
 extension.selectSingleQuote
 extension.selectDoubleQuote
+extension.selectEitherQuote
+extension.switchQuotes
 extension.selectParenthesis
 extension.selectBackTick
 extension.selectSquareBrackets
