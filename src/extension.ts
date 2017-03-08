@@ -157,8 +157,9 @@ function charRange(p: vscode.Position) {
 }
 const switchables = ['"', "'"]
 function switchQuotes() {
-  selectEitherQuote()
   let editor = vscode.window.activeTextEditor;
+  let original_sel = editor.selections
+  selectEitherQuote()
   if (!editor) { return; };
   let doc = editor.document
   let sel = editor.selections
@@ -177,6 +178,8 @@ function switchQuotes() {
     vscode.workspace.applyEdit(edit)
     doc.getText()
   })
+  // restore orignal selection
+  editor.selections = original_sel;
 }
 interface MatchingSelectOptions { start_char: string, end_char: string, outer?: boolean }
 function matchingSelect({start_char, end_char, outer = false}: MatchingSelectOptions) {
