@@ -173,7 +173,6 @@ function switchQuotes() {
     var char = doc.getText(charRange(s.start))
     var edit = new vscode.WorkspaceEdit();
     edit.replace(doc.uri, charRange(s.start), char == '"' ? "'" : '"')
-    vscode.workspace.applyEdit(edit)
     edit.replace(doc.uri, charRange(s.end), char == '"' ? "'" : '"')
     vscode.workspace.applyEdit(edit)
     doc.getText()
