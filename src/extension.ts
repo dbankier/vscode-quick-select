@@ -138,16 +138,14 @@ function selectEitherQuote() {
   let doc = editor.document
   let sel = editor.selections
   editor.selections = sel.map((s: vscode.Selection) => {
-    let singleQuotes = findSingleSelect(s, doc, "'", false, false)
-    let doubleQuotes = findSingleSelect(s, doc, '"', false, false)
-    if (singleQuotes === s) { return doubleQuotes }
-    if (doubleQuotes === s) { return singleQuotes }
-    let insideSingle = singleQuotes.start.isBeforeOrEqual(s.start) && singleQuotes.end.isAfterOrEqual(s.end)
-    let insideDouble = doubleQuotes.start.isBeforeOrEqual(s.start) && doubleQuotes.end.isAfterOrEqual(s.end)
-    if (insideSingle && !insideDouble) { return singleQuotes }
-    if (insideDouble && !insideSingle) { return doubleQuotes }
-    if (singleQuotes.start.isBefore(doubleQuotes.start)) { return doubleQuotes; }
-    return singleQuotes;
+    let selections = switchables.map(char => findSingleSelect(s,doc,char, false, false))
+    .filter(sel => sel !== s)
+    .filter(sel => sel.start.isBeforeOrEqual(s.start) && sel.end.isAfterOrEqual(s.end))
+    .sort((a,b) => a.start.isBefore(b.start) ? 1 : -1)
+    if (selections.length > 0) {
+      return selections[0]
+    }
+    return s;
   })
 }
 
@@ -155,7 +153,7 @@ function charRange(p: vscode.Position) {
   let end_pos = new vscode.Position(p.line, p.character + 1);
   return new vscode.Selection(p, end_pos)
 }
-const switchables = ['"', "'"]
+const switchables = ['"', "'", "`"]
 function switchQuotes() {
   let editor = vscode.window.activeTextEditor;
   let original_sel = editor.selections
@@ -172,8 +170,13 @@ function switchQuotes() {
     s = new vscode.Selection(start_pos, end_pos)
     var char = doc.getText(charRange(s.start))
     var edit = new vscode.WorkspaceEdit();
-    edit.replace(doc.uri, charRange(s.start), char == '"' ? "'" : '"')
-    edit.replace(doc.uri, charRange(s.end), char == '"' ? "'" : '"')
+    let next_index = switchables.indexOf(char)+1;
+    if (next_index === switchables.length) {
+      next_index = 0
+    }
+    let next_char = switchables[next_index];
+    edit.replace(doc.uri, charRange(s.start), next_char)
+    edit.replace(doc.uri, charRange(s.end), next_char)
     vscode.workspace.applyEdit(edit)
     doc.getText()
   })
