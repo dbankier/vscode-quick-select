@@ -170,9 +170,10 @@ function switchQuotes() {
   sel.map((s: vscode.Selection) => {
     if (s.start.isEqual(s.end)) { return }
     //expand selection if needed
-    var expand = switchables.indexOf(doc.getText(charRange(s.start))) === -1 ? 1 : 0
-    let start_pos = new vscode.Position(s.start.line, s.start.character - expand);
-    let end_pos = new vscode.Position(s.end.line, s.end.character + expand - 1);
+    let expand_start = switchables.indexOf(doc.getText(charRange(s.start))) === -1 ? 1 : 0
+    let expand_end = switchables.indexOf(doc.getText(charRange(s.end))) === -1 ? 1 : 0
+    let start_pos = new vscode.Position(s.start.line, s.start.character - expand_start);
+    let end_pos = new vscode.Position(s.end.line, s.end.character - expand_end);
     s = new vscode.Selection(start_pos, end_pos)
     var char = doc.getText(charRange(s.start))
     var edit = new vscode.WorkspaceEdit();
@@ -187,7 +188,9 @@ function switchQuotes() {
     doc.getText()
   })
   // restore orignal selection
+  console.log(original_sel)
   editor.selections = original_sel;
+  console.log(editor.selections)
 }
 interface MatchingSelectOptions { start_char: string, end_char: string, outer?: boolean }
 function matchingSelect({start_char, end_char, outer = false}: MatchingSelectOptions) {
