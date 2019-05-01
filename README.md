@@ -107,4 +107,4 @@ extension.selectInTag
 ## License
 
 MIT © [David Bankier @dbankier](https://github.com/dbankier)
-[@davidbankier](https://twitter.com/davidbankier)
+<!-- [@davidbankier](https://twitter.com/davidbankier) -->
