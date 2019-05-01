@@ -132,7 +132,13 @@ function singleSelect({char, outer = false, multiline = false}: SingleSelectOpti
   editor.selections = sel.map(s => findSingleSelect(s, doc, char, outer, multiline))
 }
 
+function getSwitchables() {
+  const includeBackTicks = vscode.workspace.getConfiguration('quick-select').get<boolean>('includeBackticks');
+  return ['"',"'"].concat(includeBackTicks ? ['`']:[])
+}
+
 function selectEitherQuote() {
+  const switchables = getSwitchables();
   let editor = vscode.window.activeTextEditor;
   if (!editor) { return; };
   let doc = editor.document
@@ -153,8 +159,8 @@ function charRange(p: vscode.Position) {
   let end_pos = new vscode.Position(p.line, p.character + 1);
   return new vscode.Selection(p, end_pos)
 }
-const switchables = ['"', "'", "`"]
 function switchQuotes() {
+  const switchables = getSwitchables();
   let editor = vscode.window.activeTextEditor;
   let original_sel = editor.selections
   selectEitherQuote()

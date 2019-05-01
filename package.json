@@ -106,7 +106,18 @@
         		"mac": "cmd+k shift+.",
 				"when": "editorFocus"
 			}
-		]
+		],
+		"configuration": {
+			"type":"object",
+			"title":"Quick Select configuration",
+			"properties": {
+        "quick-select.includeBackticks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include backticks when selecting or switching any quotes"
+        }
+			}
+	}
 	},
 	"scripts": {
     "vscode:prepublish": "tsc -p ./",
