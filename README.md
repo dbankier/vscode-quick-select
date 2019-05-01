@@ -49,13 +49,15 @@ In the examples below use <kbd>CTRL</kbd> instead of <kbd>⌘</kbd> for Windows.
 
 ![singlequotes](https://github.com/dbankier/vscode-quick-select/raw/master/screens/singlequotes.gif)
 
-**NEW:** You can also use this following shortcut to select either single or double quotes
+**NEW:** You can also use this following shortcut to select either single, double quotes or backticks
 
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>;</kbd>
 
 **NEW:** You can also use this following shortcut to toggle quotes, e.g. `"word"` to `'word'`
 
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>:</kbd>
+
+**NOTE:** the extensions can be configured to exclude backticks from selection or switching
 
 <kbd>⌘</kbd><kbd>k</kbd> <kbd>`</kbd>
 
