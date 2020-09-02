@@ -2,12 +2,14 @@
   "name": "vscode-quick-select",
   "displayName": "Quick and Simple Text Selection",
   "description": "Jump to select between quote, brackets, tags, etc",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "publisher": "dbankier",
   "engines": {
     "vscode": "^1.0.3"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "activationEvents": [
     "onCommand:extension.selectSingleQuote",
     "onCommand:extension.selectDoubleQuote",
@@ -25,6 +27,60 @@
   ],
   "main": "./out/src/extension",
   "contributes": {
+    "commands": [
+      {
+        "command": "extension.selectSingleQuote",
+        "title": "Quick Select: Select inside single quote"
+      },
+      {
+        "command": "extension.selectDoubleQuote",
+        "title": "Quick Select: Select inside double quote"
+      },
+      {
+        "command": "extension.selectEitherQuote",
+        "title": "Quick Select: Select inside either quote"
+      },
+      {
+        "command": "extension.switchQuotes",
+        "title": "Quick Select: Switch quotes"
+      },
+      {
+        "command": "extension.selectParenthesis",
+        "title": "Quick Select: Select inside parenthesis"
+      },
+      {
+        "command": "extension.selectBackTick",
+        "title": "Quick Select: Select inside back ticks"
+      },
+      {
+        "command": "extension.selectSquareBrackets",
+        "title": "Quick Select: Select inside square brackets"
+      },
+      {
+        "command": "extension.selectCurlyBrackets",
+        "title": "Quick Select: Select inside curly brackets"
+      },
+      {
+        "command": "extension.selectParenthesisOuter",
+        "title": "Quick Select: Select outside parenthesis"
+      },
+      {
+        "command": "extension.selectSquareBracketsOuter",
+        "title": "Quick Select: Select outside square brackets"
+      },
+      {
+        "command": "extension.selectCurlyBracketsOuter",
+        "title": "Quick Select: Select outside curly brackets"
+      },
+      {
+        "command": "extension.selectAngleBrackets",
+        "title": "Quick Select: Select inside angled brackets"
+      },
+      {
+        "command": "extension.selectInTag",
+        "title": "Quick Select: Select inside tag"
+      }
+    ],
     "keybindings": [
       {
         "command": "extension.selectSingleQuote",
