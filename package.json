@@ -1,132 +1,134 @@
 {
-	"name": "vscode-quick-select",
-	"displayName": "Quick and Simple Text Selection",
-	"description": "Jump to select between quote, brackets, tags, etc",
-	"version": "0.2.8",
-	"publisher": "dbankier",
-	"engines": {
-		"vscode": "^1.0.3"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:extension.selectSingleQuote",
-		"onCommand:extension.selectDoubleQuote",
-		"onCommand:extension.selectEitherQuote",
-		"onCommand:extension.switchQuotes",
-		"onCommand:extension.selectParenthesis",
+  "name": "vscode-quick-select",
+  "displayName": "Quick and Simple Text Selection",
+  "description": "Jump to select between quote, brackets, tags, etc",
+  "version": "0.2.8",
+  "publisher": "dbankier",
+  "engines": {
+    "vscode": "^1.0.3"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:extension.selectSingleQuote",
+    "onCommand:extension.selectDoubleQuote",
+    "onCommand:extension.selectEitherQuote",
+    "onCommand:extension.switchQuotes",
+    "onCommand:extension.selectParenthesis",
     "onCommand:extension.selectBackTick",
-		"onCommand:extension.selectSquareBrackets",
-		"onCommand:extension.selectCurlyBrackets",
+    "onCommand:extension.selectSquareBrackets",
+    "onCommand:extension.selectCurlyBrackets",
     "onCommand:extension.selectParenthesisOuter",
-		"onCommand:extension.selectSquareBracketsOuter",
-		"onCommand:extension.selectCurlyBracketsOuter",
-		"onCommand:extension.selectAngleBrackets",
-		"onCommand:extension.selectInTag"
-	],
-	"main": "./out/src/extension",
-	"contributes": {
-		"keybindings": [
-			{
-				"command": "extension.selectSingleQuote",
-				"key": "ctrl+k '",
-        		"mac": "cmd+k '",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectDoubleQuote",
-				"key": "ctrl+k shift+'",
-        		"mac": "cmd+k shift+'",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectEitherQuote",
-				"key": "ctrl+k ;",
-        		"mac": "cmd+k ;",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.switchQuotes",
-				"key": "ctrl+k shift+;",
-        		"mac": "cmd+k shift+;",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectParenthesis",
-				"key": "ctrl+k shift+9",
-        		"mac": "cmd+k shift+9",
-				"when": "editorFocus"
-			},
-      		{
-				"command": "extension.selectBackTick",
-				"key": "ctrl+k `",
-        		"mac": "cmd+k `",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectSquareBrackets",
-				"key": "ctrl+k [",
-        		"mac": "cmd+k [",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectCurlyBrackets",
-				"key": "ctrl+k shift+[",
-        		"mac": "cmd+k shift+[",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectParenthesisOuter",
-				"key": "ctrl+k shift+0",
-        		"mac": "cmd+k shift+0",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectSquareBracketsOuter",
-				"key": "ctrl+k ]",
-        		"mac": "cmd+k ]",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectCurlyBracketsOuter",
-				"key": "ctrl+k shift+]",
-        		"mac": "cmd+k shift+]",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectAngleBrackets",
-				"key": "ctrl+k shift+,",
-        		"mac": "cmd+k shift+,",
-				"when": "editorFocus"
-			},
-			{
-				"command": "extension.selectInTag",
-				"key": "ctrl+k shift+.",
-        		"mac": "cmd+k shift+.",
-				"when": "editorFocus"
-			}
-		],
-		"configuration": {
-			"type":"object",
-			"title":"Quick Select configuration",
-			"properties": {
+    "onCommand:extension.selectSquareBracketsOuter",
+    "onCommand:extension.selectCurlyBracketsOuter",
+    "onCommand:extension.selectAngleBrackets",
+    "onCommand:extension.selectInTag"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "extension.selectSingleQuote",
+        "key": "ctrl+k '",
+        "mac": "cmd+k '",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectDoubleQuote",
+        "key": "ctrl+k shift+'",
+        "mac": "cmd+k shift+'",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectEitherQuote",
+        "key": "ctrl+k ;",
+        "mac": "cmd+k ;",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.switchQuotes",
+        "key": "ctrl+k shift+;",
+        "mac": "cmd+k shift+;",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectParenthesis",
+        "key": "ctrl+k shift+9",
+        "mac": "cmd+k shift+9",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectBackTick",
+        "key": "ctrl+k `",
+        "mac": "cmd+k `",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectSquareBrackets",
+        "key": "ctrl+k [",
+        "mac": "cmd+k [",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectCurlyBrackets",
+        "key": "ctrl+k shift+[",
+        "mac": "cmd+k shift+[",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectParenthesisOuter",
+        "key": "ctrl+k shift+0",
+        "mac": "cmd+k shift+0",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectSquareBracketsOuter",
+        "key": "ctrl+k ]",
+        "mac": "cmd+k ]",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectCurlyBracketsOuter",
+        "key": "ctrl+k shift+]",
+        "mac": "cmd+k shift+]",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectAngleBrackets",
+        "key": "ctrl+k shift+,",
+        "mac": "cmd+k shift+,",
+        "when": "editorFocus"
+      },
+      {
+        "command": "extension.selectInTag",
+        "key": "ctrl+k shift+.",
+        "mac": "cmd+k shift+.",
+        "when": "editorFocus"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Quick Select configuration",
+      "properties": {
         "quick-select.includeBackticks": {
           "type": "boolean",
           "default": true,
           "description": "Include backticks when selecting or switching any quotes"
         }
-			}
-	}
-	},
-	"scripts": {
+      }
+    }
+  },
+  "scripts": {
     "vscode:prepublish": "tsc -p ./",
     "compile": "tsc -watch -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install"
-	},
-	"devDependencies": {
+  },
+  "devDependencies": {
     "typescript": "^2.0.3",
     "vscode": "^1.0.0",
     "@types/node": "^6.0.40"
-	}
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbankier/vscode-quick-select/"
+  }
 }
